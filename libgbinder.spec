@@ -29,7 +29,7 @@ Requires:	%{libname} = %{version}-%{release}
 This package contains the development library for %{name}.
 
 %prep
-%autosetup -n -T -D
+%autosetup -n -D
 
 %build
 %make_build \
