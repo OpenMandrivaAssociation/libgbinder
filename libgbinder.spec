@@ -1,37 +1,35 @@
-%global libname libgbinder1
+%define libname %mklibname gbinder %{api} %{major}
+%define devname %mklibname -d gbinder %{api}
+
 Name:           libgbinder
-Version:        master
-Release:        0
+Version:        1.2.25
+Release:        1
 Summary:        GLib-style interface to binder
 License:        BSD-3-Clause
 URL:            https://github.com/mer-hybris/libgbinder
-Source0:        _service
+Source0:        https://github.com/mer-hybris/libgbinder/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
 Source1:        gbinder.conf
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  libglibutil-devel
-Requires(post): /sbin/ldconfig
-Requires(postun): /sbin/ldconfig
+BuildRequires:  pkgconfig(libglibutil)
 
 %description
 GLib-style interface to binder (Android IPC mechanism)
 
 %package -n %{libname}
 Summary:        Library for %{name}
-Requires(post): /sbin/ldconfig
-Requires(postun): /sbin/ldconfig
 
 %description -n %{libname}
 Library for %{name}.
 
-%package devel
+%package -n %{devname}
 Summary:        Development library for %{name}
-Requires: %{libname} = %{version}
+Requires:	%{libname} = %{version}-%{release}
 
-%description devel
+%description -n %{devname}
 This package contains the development library for %{name}.
 
 %prep
-%autosetup -n %{_sourcedir}/%{name}-%{version} -T -D
+%autosetup -n -T -D
 
 %build
 %make_build \
@@ -49,9 +47,6 @@ This package contains the development library for %{name}.
 install -Dm 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/gbinder.conf
 mkdir %{buildroot}%{_sysconfdir}/gbinder.d
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
-
 %files -n %{libname}
 %doc AUTHORS README
 %license LICENSE
@@ -59,7 +54,7 @@ mkdir %{buildroot}%{_sysconfdir}/gbinder.d
 %dir %{_sysconfdir}/gbinder.d
 %config(noreplace) %{_sysconfdir}/gbinder.conf
 
-%files devel
+%files -n %{devname}
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/%{name}.so
 %dir %{_includedir}/gbinder
