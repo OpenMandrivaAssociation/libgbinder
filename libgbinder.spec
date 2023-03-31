@@ -5,7 +5,7 @@
 
 Name:           libgbinder
 Version:        1.1.30
-Release:        1
+Release:        2
 Summary:        GLib-style interface to binder
 License:        BSD-3-Clause
 URL:            https://github.com/mer-hybris/libgbinder
