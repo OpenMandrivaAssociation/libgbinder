@@ -4,8 +4,8 @@
 %define devname %mklibname -d gbinder
 
 Name:           libgbinder
-Version:        1.1.30
-Release:        2
+Version:        1.1.34
+Release:        1
 Summary:        GLib-style interface to binder
 License:        BSD-3-Clause
 URL:            https://github.com/mer-hybris/libgbinder
