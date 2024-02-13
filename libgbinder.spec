@@ -4,7 +4,7 @@
 %define devname %mklibname -d gbinder
 
 Name:           libgbinder
-Version:        1.1.35
+Version:        1.1.36
 Release:        1
 Summary:        GLib-style interface to binder
 License:        BSD-3-Clause
