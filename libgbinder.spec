@@ -11,6 +11,7 @@ License:        BSD-3-Clause
 URL:            https://github.com/mer-hybris/libgbinder
 Source0:        https://github.com/mer-hybris/libgbinder/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
 Source1:        gbinder.conf
+BuildRequires:  make
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libglibutil)
 
